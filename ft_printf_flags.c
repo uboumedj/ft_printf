@@ -6,7 +6,7 @@
 /*   By: uboumedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/05 18:07:10 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/12 10:44:43 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int		ft_check_flags(const char c)
 void    ft_do_flag(const char *str, int check, va_list *vlist, int *len)
 {
 	(void)str;
-	if (check == 3)
+	if (check == 2)
+		ft_do_char(va_arg(*vlist, int), len);
+	else if (check == 3)
 		ft_do_str(va_arg(*vlist, char *), len);
 	else if (check == 4)
 		ft_do_int(va_arg(*vlist, int), len);

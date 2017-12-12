@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uboumedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 15:21:55 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/12 11:20:58 by uboumedj         ###   ########.fr       */
+/*   Created: 2017/12/12 10:18:34 by uboumedj          #+#    #+#             */
+/*   Updated: 2017/12/12 10:28:52 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int main()
+void	ft_do_char(const char c, int *len)
 {
-	ft_printf("Hello world, %hh#s lol %s\n", "salut", "merde");
-	ft_printf("Test nombre %d haha\n", 42);
-	ft_printf("test caractere %c %c\n", 'b', 66);
-	printf("Test printf short %k %hd %ld\n", 2147, 2147, 2147);
-	return (0);
+	ft_putchar(c);
+	(*len)++;
 }
