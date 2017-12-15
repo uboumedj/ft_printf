@@ -3,54 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uboumedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:36:23 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/12 10:58:05 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/15 04:53:51 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int		ft_strparse(const char *str, int *len, va_list *vlist)
+size_t		strparse(const char *str, va_list *vlist)
 {
-	int			i;
-	int			check;
+	size_t	len;
+	char	*tmp;
+	char	*start;
 
-	i = 0;
-	while (str[i] != '\0')
+	len = 0;
+	tmp = (char *)str;
+	start = tmp;
+	while (*tmp != '\0')
 	{
-		if (str[i] != '%')
+		if (*tmp != '\0' && *tmp != '%')
 		{
-			ft_putchar(str[i]);
-			*len += 1;
+			len++;
+			tmp++;
 		}
-		else
+		else if (*tmp == '%')
 		{
-			i++;
-			while ((check = ft_check_flags(str[i])) < 2 || check > 8 )
-				i++;
-			ft_do_flag(&str[i], check, vlist, len);
+			ft_putstr_i(start, tmp - start);
+			len += ft_do_flag(&tmp, vlist);
+			start = tmp;
 		}
-		i++;
 	}
-	return (0);
+	ft_putstr_i(start, tmp - start);
+	return (len);
 }
 
-int		ft_printf(const char *str, ...)
+int		ft_printf(const char *format, ...)
 {
 	va_list		vlist;
 	int			i;
-	int			len;
+	size_t			len;
 
 	i = 0;
 	len = 0;
-	if (!str)
-		return (-1);
-	va_start(vlist, str);
-	if (ft_strparse(str, &len, &vlist) == -1)
-		return (-1);
-	va_end(vlist);
+	if (format)
+	{
+		va_start(vlist, format);
+		len = strparse(format, &len, &vlist);
+		va_end(vlist);
+	}
 	return (len);
 }
