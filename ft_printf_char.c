@@ -6,13 +6,13 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:18:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/15 04:37:25 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/16 03:42:16 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_do_char(const char c, size_t *len)
+void	do_char(const char c, size_t *len)
 {
 	ft_putchar(c);
 	*len += 1;
