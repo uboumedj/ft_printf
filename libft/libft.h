@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 11:39:48 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/15 05:09:48 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/17 02:24:31 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void			ft_putnbr_fd(int n, int fd);
 */
 
 int				ft_atoi(const char *str);
+int				ft_strtonum(char **str, int *res);
 char			*ft_itoa(int n);
 char			*ft_strrev(char *str);
 char			*ft_strcat(char *s1, const char *s2);
@@ -121,5 +122,6 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				ft_abs(int n);
 int				ft_sqrt(int nb);
 int				ft_pow(int x, int y);
+int				ft_toneg(int *nb);
 
 #endif
