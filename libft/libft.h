@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 11:39:48 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/17 02:24:31 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/18 02:23:01 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void			ft_strclr(char *s);
 char			*ft_strtrim(char const *str);
 char			*ft_strctrim(char const *s, char c);
 char			**ft_strsplit(char const *s, char c);
+int				ft_nbrlen(long long int nbr);
 
 /*
 ** ---------------------------CHAR Manipulation-----------------------------
@@ -123,5 +124,7 @@ int				ft_abs(int n);
 int				ft_sqrt(int nb);
 int				ft_pow(int x, int y);
 int				ft_toneg(int *nb);
+int				ft_max(int a, int b);
+int				ft_min(int a, int b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/17 03:09:15 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/18 02:29:23 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,31 @@ size_t	do_nb(va_list *vlist, int mod, t_printf *handler)
 		res = (intmax_t)va_arg(*vlist, long long int);
 	else if (mod == 6)
 		res = (size_t)va_arg(*vlist, long long int);
-	return (ft_putnb(&res, handler));
+	return (print_nb(&res, handler));
+}
+
+static int	nb_length(long long int nb, t_printf *handler)
+{
+	int		ilen;
+	int		res;
+
+	ilen = ft_nbrlen(nb);
+	res = ft_max(handler->prcsn, ilen);
+	if (nb < 0 || (nb == 0 && handler->prcsn == -1))
+		res += 1;
+	if ((nb > 0 || (nb == 0 && handler->prcsn == -1))
+		&& (handler->f_add || handler->f_spc))
+		res += 1;
+	return (res);
 }
 
 size_t	print_nb(long long int *res, t_printf *handler)
 {
+	int		ilen;
+	int		len;
 
+	if (!format)
+		return (0);
+	ilen = ft_nbrlen(nb);
+	len = nb_length(nb, handler);
 }

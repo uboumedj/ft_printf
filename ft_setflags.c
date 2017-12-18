@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/17 03:26:17 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/18 02:03:23 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ size_t	do_flag(char **str, va_list *vlist)
 		(*ptr)++;
 		if (**ptr != '\0')
 		{
+			mod = 0;
 			*ptr = parse_flag(vlist, &handler, *str, &mod);
 			return (print_flag(vlist, &handler, mod));
 		}
@@ -66,12 +67,46 @@ int		set_width(va_list *vlist, int *width, char **str)
 	return (1);
 }
 
-char	*parse_flag(va_list *vlist, t_printf *handler, char *str)
+void set_length(char **str, int *mod)
+{
+	if (*str == 'h')
+	{
+		*str += 1;
+		*mod = 2;
+		if (*str == 'h')
+		{
+			*str += 1;
+			*mod = 1;
+		}
+	}
+	else if (*str == 'l')
+	{
+		*str += 1;
+		*mod = 3;
+		if (*str == 'l')
+		{
+			*str += 1;
+			*mod = 4;
+		}
+	}
+	else if (*str == 'j' || *str == 'z')
+	{
+		*str += 1;
+		*mod = ((*str == 'j') ? 5 : 6);
+	}
+}
+
+char	*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
 {
 	set_flags(handler, &str, "-+ #0");
 	set_width(vlist, &(handler->width), &str);
 	if (ft_toneg(&(handler->width)))
 		handler->f_min = 1;
+	if (*str = '.')
+		set_width(vlist, &(handler->prcsn), &str);
+	else
+		handler->prcsn = -1;
+	set_length(&str, mod);
 	handler->spec = *str;
 	if (*str != '\0')
 		str++;

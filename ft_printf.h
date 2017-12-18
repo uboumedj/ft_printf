@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:37:31 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/17 03:09:25 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/18 01:47:38 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ typedef struct  s_printf
 int   ft_printf(const char *format, ...);
 size_t    strparse(const char *str, va_list *vlist);
 
-char	*parse_flag(va_list *vlist, t_printf *handler, char *str);
+char	*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod);
+void set_length(char **str, int *mod);
+int		set_width(va_list *vlist, int *width, char **str);
+void set_flags(t_printf *handler, char **str, const char *list);
 size_t	do_flag(char **str, va_list *vlist);
 size_t	print_flag(va_list *vlist, t_printf *handler, int mod);
 

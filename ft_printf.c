@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:36:23 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/15 04:53:51 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/18 01:49:27 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t		strparse(const char *str, va_list *vlist)
 		else if (*tmp == '%')
 		{
 			ft_putstr_i(start, tmp - start);
-			len += ft_do_flag(&tmp, vlist);
+			len += do_flag(&tmp, vlist);
 			start = tmp;
 		}
 	}
