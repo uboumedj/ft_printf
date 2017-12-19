@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:37:31 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 19:10:29 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/19 21:00:40 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ size_t    print_nb(long long int res, t_printf *handler);
 
 size_t		do_unb(va_list *vlist, int mod, t_printf *handler);
 size_t    print_unb(unsigned long long int res, t_printf *handler);
+
+size_t    do_onb(va_list *vlist, int mod, t_printf *handler);
+size_t    print_onb(unsigned long long int res, t_printf *handler);
 
 size_t    do_char(va_list *vlist, t_printf *handler, int mod);
 size_t    print_char(wchar_t c, t_printf *handler);

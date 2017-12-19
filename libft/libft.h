@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 11:39:48 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 03:00:38 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/19 20:49:38 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char			*ft_strtrim(char const *str);
 char			*ft_strctrim(char const *s, char c);
 char			**ft_strsplit(char const *s, char c);
 int				ft_nbrlen(long long int nbr);
+size_t		ft_unbrlenbase(unsigned long long int nb, unsigned int base);
 
 /*
 ** ---------------------------CHAR Manipulation-----------------------------
