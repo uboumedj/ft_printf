@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/18 02:03:23 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/19 18:15:09 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void set_length(char **str, int *mod)
 	}
 	else if (*str == 'j' || *str == 'z')
 	{
-		*str += 1;
 		*mod = ((*str == 'j') ? 5 : 6);
+		*str += 1;
 	}
 }
 
