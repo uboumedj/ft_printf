@@ -6,13 +6,13 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/18 02:29:23 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/19 03:14:56 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	do_nb(va_list *vlist, int mod, t_printf *handler)
+size_t				do_nb(va_list *vlist, int mod, t_printf *handler)
 {
 	long long int res;
 
@@ -33,7 +33,7 @@ size_t	do_nb(va_list *vlist, int mod, t_printf *handler)
 	return (print_nb(&res, handler));
 }
 
-static int	nb_length(long long int nb, t_printf *handler)
+static int		nb_length(long long int nb, t_printf *handler)
 {
 	int		ilen;
 	int		res;
@@ -48,13 +48,43 @@ static int	nb_length(long long int nb, t_printf *handler)
 	return (res);
 }
 
-size_t	print_nb(long long int *res, t_printf *handler)
+static void		put_nb(long long int res)
+{
+	if (res < 0)
+		res = -res;
+	if (res < 10)
+		ft_putchar('0' + res);
+	else
+	{
+		put_nb(res / 10);
+		ft_putchar('0' + (res % 10));
+	}
+}
+
+size_t				print_nb(long long int res, t_printf *handler)
 {
 	int		ilen;
 	int		len;
 
-	if (!format)
+	if (!handler)
 		return (0);
-	ilen = ft_nbrlen(nb);
-	len = nb_length(nb, handler);
+	ilen = ft_nbrlen(res);
+	len = nb_length(res, handler);
+	if (len < handler->width && !(handler->f_min) && !(handler->f_zero)
+				&& !(handler->prcsn < 0))
+		ft_putlenchar(' ', handler->width - len);
+	if (res < 0)
+		ft_putchar('-');
+	else if (res >= 0 && (handler->f_add || handler->f_spc))
+			ft_putchar(handler->f_add ? '+' : ' ');
+	if (len < handler->width && !(handler->f_min) && handler->f_zero
+				&& handler->prcsn < 0)
+		ft_putlenchar('0', handler->width - len);
+	if (ilen < format->prcsn)
+		ft_putlenchar('0', handler->prcsn - ilen);
+	if (res != 0 || handler->prcsn == -1)
+		put_nb(res);
+	if (handler->f_min && len < handler->width)
+		ft_putlenchar(' ', handler->width - len);
+	return (ft_max(len, handler->width));
 }
