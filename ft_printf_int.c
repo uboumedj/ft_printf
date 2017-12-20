@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 03:14:56 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 02:48:58 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ size_t				print_nb(long long int res, t_printf *handler)
 		return (0);
 	ilen = ft_nbrlen(res);
 	len = nb_length(res, handler);
-	if (len < handler->width && !(handler->f_min) && !(handler->f_zero)
-				&& !(handler->prcsn < 0))
+	if (len < handler->width && !(handler->f_min) && (!(handler->f_zero)
+				|| !(handler->prcsn == -1)))
 		ft_putlenchar(' ', handler->width - len);
 	if (res < 0)
 		ft_putchar('-');
