@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:37:31 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 21:23:00 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 01:58:00 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ size_t    print_hexnb(unsigned long long int res, t_printf *handler);
 size_t    do_char(va_list *vlist, t_printf *handler, int mod);
 size_t    print_char(wchar_t c, t_printf *handler);
 
-void      do_str(const char *str, size_t *len);
+size_t    do_str(va_list *vlist, t_printf *handler, int mod);
 
 #endif

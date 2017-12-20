@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 21:22:48 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 01:53:08 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t			do_hexnb(va_list *vlist, int mod, t_printf *handler)
 		res = (uintmax_t)va_arg(*vlist, unsigned long long int);
 	else if (mod == 6)
 		res = (size_t)va_arg(*vlist, unsigned long long int);
-	return (print_onb(&res, handler));
+	return (print_hexnb(&res, handler));
 }
 
 static int		hexnb_length(unsigned long long int nb, t_printf *handler)
@@ -49,7 +49,22 @@ static int		hexnb_length(unsigned long long int nb, t_printf *handler)
 
 static void		put_hexnb(unsigned long long int res, t_printf *handler)
 {
-  
+	char hexlist[17];
+
+	if (handler->spec == 'x')
+		hexlist = "0123456789abcdef\0";
+	else if (handler->spec == 'X')
+		hexlist = "0123456789ABCDEF\0";
+	if (hexlist)
+	{
+  	if (res < 16)
+			ft_putchar(hexlist[res]);
+		else
+		{
+			put_hexnb(res / 16, handler);
+			ft_putchar(hexlist[res % 16]);
+		}
+	}
 }
 
 size_t      print_hexnb(unsigned long long int res, t_printf *handler)
@@ -67,7 +82,8 @@ size_t      print_hexnb(unsigned long long int res, t_printf *handler)
   	ft_putstr(handler->spec == 'X' ? "0X" : "0x");
   if (ilen < handler->prcsn)
   	ft_putlenchar('0', handler->prcsn - ilen);
-  put_hexnb(res, handler);
+	if (res != 0 || handler->prcsn == -1)
+  	put_hexnb(res, handler);
   if (handler->f_min && len < handler->width)
   	ft_putlenchar(' ', handler->width - len);
   return (ft_max(len, handler->width));
