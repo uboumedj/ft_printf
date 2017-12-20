@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 11:39:48 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 20:49:38 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 03:33:33 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_list
 
 void			ft_putchar(char c);
 void			ft_putstr(char const *str);
-void			ft_putstr_i(char const *start, char *end)
+void			ft_putstr_i(char const *start, char *end);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl(char const *s);
