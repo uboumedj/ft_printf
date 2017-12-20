@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 01:50:27 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/17 02:01:36 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 03:45:03 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int   ft_strtonum(char **str, int *res)
 			temp = temp * 10 + (temp_ptr[i] - '0');
 			i++;
 		}
-		*nbr = neg * temp;
+		*res = neg * temp;
 		*str = str + i;
 		return (i > 0 ? 1 : 0);
 	}
