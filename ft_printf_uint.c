@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 18:35:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 19:02:46 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 08:39:00 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t			do_unb(va_list *vlist, int mod, t_printf *handler)
 		res = (uintmax_t)va_arg(*vlist, unsigned long long int);
 	else if (mod == 6)
 		res = (size_t)va_arg(*vlist, unsigned long long int);
-	return (print_unb(&res, handler));
+	return (print_unb((unsigned long long int)res, handler));
 }
 
 static int		unb_length(unsigned long long int nb, t_printf *handler)

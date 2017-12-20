@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 02:37:57 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 08:37:41 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t			do_hexnb(va_list *vlist, int mod, t_printf *handler)
 		res = (uintmax_t)va_arg(*vlist, unsigned long long int);
 	else if (mod == 6)
 		res = (size_t)va_arg(*vlist, unsigned long long int);
-	return (print_hexnb(&res, handler));
+	return (print_hexnb((unsigned long long int)res, handler));
 }
 
 static int		hexnb_length(unsigned long long int nb, t_printf *handler)

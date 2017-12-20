@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 20:42:14 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 02:38:22 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 08:38:33 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t			do_onb(va_list *vlist, int mod, t_printf *handler)
 		res = (uintmax_t)va_arg(*vlist, unsigned long long int);
 	else if (mod == 6)
 		res = (size_t)va_arg(*vlist, unsigned long long int);
-	return (print_onb(&res, handler));
+	return (print_onb((unsigned long long int)res, handler));
 }
 
 static int		onb_length(unsigned long long int nb, t_printf *handler)

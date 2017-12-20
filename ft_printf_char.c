@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:18:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 02:08:24 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 08:37:58 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	do_char(va_list *vlist, t_printf *handler, int mod)
 		c = (wchar_t)va_arg(*vlist, wint_t);
 	else if (handler->spec == 'c')
 		c = (char)va_arg(*vlist, char);
-	return (print_char(&c, handler));
+	return (print_char((wchar_t)c, handler));
 }
 
 size_t	print_char(wchar_t c, t_printf *handler)
