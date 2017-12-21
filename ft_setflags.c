@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 18:15:09 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 05:26:55 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 size_t	do_flag(char **str, va_list *vlist)
 {
 	t_printf	handler;
-	int mod;
+	int				mod;
 
-	if (**ptr == '%')
+	if (**str == '%')
 	{
-		(*ptr)++;
-		if (**ptr != '\0')
+		(*str)++;
+		if (**str != '\0')
 		{
 			mod = 0;
-			*ptr = parse_flag(vlist, &handler, *str, &mod);
+			*str = parse_flag(vlist, &handler, *str, &mod);
 			return (print_flag(vlist, &handler, mod));
 		}
 	}
@@ -37,15 +37,15 @@ void set_flags(t_printf *handler, char **str, const char *list)
 		while (ft_strchr(list, **str) != 0)
 		{
 			if (**str == '-')
-				format->f_min = 1;
+				handler->f_min = 1;
 			else if (**str == '+')
-				format->f_plus = 1;
+				handler->f_plus = 1;
 			else if (**str == ' ')
-				format->f_spc = 1;
+				handler->f_spc = 1;
 			else if (**str == '#')
-				format->f_shrp = 1;
+				handler->f_shrp = 1;
 			else if (**str == '0')
-				format->f_zero = 1;
+				handler->f_zero = 1;
 			*str += 1;
 		}
 	}
@@ -62,36 +62,36 @@ int		set_width(va_list *vlist, int *width, char **str)
 	}
 	else if ((ft_strtonum(str, width)) == 0)
 		return (0);
-	if (set_width(vlist, test, str) == 1)
+	if (set_width(vlist, &test, str) == 1)
 		*width = test;
 	return (1);
 }
 
 void set_length(char **str, int *mod)
 {
-	if (*str == 'h')
+	if (**str == 'h')
 	{
 		*str += 1;
 		*mod = 2;
-		if (*str == 'h')
+		if (**str == 'h')
 		{
 			*str += 1;
 			*mod = 1;
 		}
 	}
-	else if (*str == 'l')
+	else if (**str == 'l')
 	{
 		*str += 1;
 		*mod = 3;
-		if (*str == 'l')
+		if (**str == 'l')
 		{
 			*str += 1;
 			*mod = 4;
 		}
 	}
-	else if (*str == 'j' || *str == 'z')
+	else if (**str == 'j' || **str == 'z')
 	{
-		*mod = ((*str == 'j') ? 5 : 6);
+		*mod = ((**str == 'j') ? 5 : 6);
 		*str += 1;
 	}
 }
@@ -102,7 +102,7 @@ char	*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
 	set_width(vlist, &(handler->width), &str);
 	if (ft_toneg(&(handler->width)))
 		handler->f_min = 1;
-	if (*str = '.')
+	if (*str == '.')
 		set_width(vlist, &(handler->prcsn), &str);
 	else
 		handler->prcsn = -1;
