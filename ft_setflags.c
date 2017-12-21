@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 05:26:55 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 05:27:53 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void set_flags(t_printf *handler, char **str, const char *list)
 			if (**str == '-')
 				handler->f_min = 1;
 			else if (**str == '+')
-				handler->f_plus = 1;
+				handler->f_add = 1;
 			else if (**str == ' ')
 				handler->f_spc = 1;
 			else if (**str == '#')
