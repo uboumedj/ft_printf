@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 01:30:54 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 08:29:25 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 04:13:27 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ size_t	print_flag(va_list *vlist, t_printf *handler, int mod)
 		return(print_char('%', handler));
 	else if (handler->spec == 'd' || handler->spec == 'i')
 		return (do_nb(vlist, handler, mod));
-	else if (handler->spec == 'u' || handler->spec == 'U')
+	else if (handler->spec == 'D' || handler->spec == 'U' || handler->spec == 'O')
+		return (do_lnb(vlist, handler, mod));
+	else if (handler->spec == 'u')
 		return (do_unb(vlist, handler, mod));
-	else if (handler->spec == 'o' || handler->spec == 'O')
+	else if (handler->spec == 'o')
 		return (do_onb(vlist, handler, mod));
 	else if (handler->spec == 'x' || handler->spec == 'X')
 		return (do_hexnb(vlist, handler, mod));
