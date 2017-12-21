@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 02:30:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 02:56:46 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 05:01:39 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,15 @@ static size_t ptr_len(size_t ptr, size_t ilen, t_printf *handler)
   return (len);
 }
 
-static void   put_ptr(size_t ptr)
+static void   put_ptr(size_t ptr, char *hexlist)
 {
-  char hexlist[17];
-
-	hexlist = "0123456789abcdef\0";
 	if (hexlist)
 	{
   	if (ptr < 16)
 			ft_putchar(hexlist[ptr]);
 		else
 		{
-			put_ptr(ptr / 16);
+			put_ptr(ptr / 16, hexlist);
 			ft_putchar(hexlist[ptr % 16]);
 		}
 	}
@@ -81,7 +78,7 @@ size_t        print_ptr(size_t ptr, t_printf *handler)
   if (ilen < handler->prcsn)
   	ft_putlenchar('0', handler->prcsn - ilen);
   if (ptr != 0 || handler->prcsn == -1)
-    put_ptr(ptr);
+    put_ptr(ptr, "0123456789abcdef");
   if (handler->f_min && len < handler->width)
   	ft_putlenchar(' ', handler->width - len);
 	return (ft_max(len, handler->width));
