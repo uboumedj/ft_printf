@@ -6,13 +6,13 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:18:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:53:56 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 05:14:55 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t			do_char(va_list *vlist, t_printf *handler, int mod)
+size_t			do_char(va_list *vlist, int mod, t_printf *handler)
 {
 	wint_t	c;
 
