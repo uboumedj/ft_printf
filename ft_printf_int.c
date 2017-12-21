@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:57:14 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 04:59:59 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ size_t				print_nb(long long int res, t_printf *handler)
 	if (len < handler->width && !(handler->f_min) && handler->f_zero
 				&& handler->prcsn < 0)
 		ft_putlenchar('0', handler->width - len);
-	if (ilen < format->prcsn)
+	if (ilen < handler->prcsn)
 		ft_putlenchar('0', handler->prcsn - ilen);
 	if (res != 0 || handler->prcsn == -1)
 		put_nb(res);
