@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:42:39 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 04:50:42 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,12 @@ static int		hexnb_length(unsigned long long int nb, t_printf *handler)
 	return (res);
 }
 
-static void		put_hexnb(unsigned long long int res, t_printf *handler)
+static void		put_hexnb(unsigned long long int res, t_printf *handler,
+													char *hexlist)
 {
-	char hexlist[17];
-
-	if (handler->spec == 'x')
-		hexlist = "0123456789abcdef\0";
-	else if (handler->spec == 'X')
-		hexlist = "0123456789ABCDEF\0";
 	if (hexlist)
-	{
-  	if (res < 16)
+  {
+		if (res < 16)
 			ft_putchar(hexlist[res]);
 		else
 		{
@@ -77,7 +72,7 @@ size_t      print_hexnb(unsigned long long int res, t_printf *handler)
   if (!handler)
     return (0);
   ilen = ft_unbrlenbase(res, 16);
-  len = onb_length(res, handler);
+  len = hexnb_length(res, handler);
   if (!(handler->f_min) && len < handler->width)
 		ft_putlenchar(handler->f_zero ? '0' : ' ', handler->width - len);
   if (handler->f_shrp && res != 0)
@@ -85,7 +80,12 @@ size_t      print_hexnb(unsigned long long int res, t_printf *handler)
   if (ilen < handler->prcsn)
   	ft_putlenchar('0', handler->prcsn - ilen);
 	if (res != 0 || handler->prcsn == -1)
-  	put_hexnb(res, handler);
+	{
+		if (handler->spec == 'x')
+			put_hexnb(res, handler, "0123456789abcdef");
+		else if (handler->spec == 'X')
+			put_hexnb(res, handler, "0123456789ABCDEF");
+	}
   if (handler->f_min && len < handler->width)
   	ft_putlenchar(' ', handler->width - len);
   return (ft_max(len, handler->width));
