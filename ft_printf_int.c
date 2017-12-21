@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:19:55 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 04:57:14 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ size_t				do_lnb(va_list *vlist, int mod, t_printf *handler)
 	else if (handler->spec == 'U')
 		return (print_unb((unsigned long long int)res, handler));
 	else if (handler->spec == 'O')
-		return (printf_onb((unsigned long long int)res, handler));
+		return (print_onb((unsigned long long int)res, handler));
 	return (0);
 }
 

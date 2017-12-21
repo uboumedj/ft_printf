@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:37:31 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:19:03 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 04:57:51 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct  s_printf
   int   prcsn;
   int   width;
   char  f_min;
-  char  f_plus;
+  char  f_add;
   char  f_spc;
   char  f_zero;
   char  f_shrp;
