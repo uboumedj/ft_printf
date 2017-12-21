@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:50:42 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 04:55:15 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		put_hexnb(unsigned long long int res, t_printf *handler,
 			ft_putchar(hexlist[res]);
 		else
 		{
-			put_hexnb(res / 16, handler);
+			put_hexnb(res / 16, handler, hexlist);
 			ft_putchar(hexlist[res % 16]);
 		}
 	}
