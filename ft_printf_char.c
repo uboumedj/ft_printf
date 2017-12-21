@@ -6,13 +6,13 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:18:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 08:37:58 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 20:57:12 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	do_char(va_list *vlist, t_printf *handler, int mod)
+size_t			do_char(va_list *vlist, t_printf *handler, int mod)
 {
 	wint_t	c;
 
@@ -25,20 +25,19 @@ size_t	do_char(va_list *vlist, t_printf *handler, int mod)
 	return (print_char((wchar_t)c, handler));
 }
 
-size_t	print_char(wchar_t c, t_printf *handler)
+size_t			print_char(wchar_t c, t_printf *handler)
 {
 	int len;
 
 	if (!handler)
 		return (0);
+	len = 1;
 	if (handler->spec == 'C')
-		len = 2; //à changer
-	else
-		len = 1;
+		len = ft_wcharlen(c);
 	if (!(handler->f_min) && handler->width > len)
 		ft_putlenchar(handler->f_zero ? '0' : ' ', handler->width - len);
 	if (handler->spec == 'C')
-		ft_putchar(c); //à changer
+		ft_putwchar(c);
 	else
 		ft_putchar(c);
 	if (handler->f_min && handler->width > len)

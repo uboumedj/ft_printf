@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 11:39:48 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 03:33:33 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 21:45:39 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <wchar.h>
 
 typedef struct	s_list
 {
@@ -39,6 +40,10 @@ void			ft_putnbr(int n);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putspace(size_t len);
 void			ft_putlenchar(char c, size_t len);
+void			ft_putwchar(wchar_t c);
+void 			ft_putwstr(wchar_t const *str);
+void			ft_putlenstr(char *str, int len);
+void			ft_putlenwstr(wchar_t *str, int len);
 
 /*
 ** ---------------------------STRING Manipulation--------------------------
@@ -78,6 +83,8 @@ char			*ft_strctrim(char const *s, char c);
 char			**ft_strsplit(char const *s, char c);
 int				ft_nbrlen(long long int nbr);
 size_t		ft_unbrlenbase(unsigned long long int nb, unsigned int base);
+int				ft_wstrlen(const wchar_t *str);
+int				ft_wstrnlen(const wchar_t *str, int n);
 
 /*
 ** ---------------------------CHAR Manipulation-----------------------------
@@ -94,6 +101,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
+int				ft_wcharlen(wchar_t c)
 
 /*
 ** ----------------------------Memory Manipulation---------------------------

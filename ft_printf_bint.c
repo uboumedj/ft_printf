@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 07:18:08 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 08:38:08 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 21:52:06 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		bnb_length(unsigned long long int nb, t_printf *handler)
 
 	if (nb == 0)
 		return (0);
-	ilen = ft_nbrlenbase(nb, 2);
+	ilen = ft_unbrlenbase(nb, 2);
 	res = ft_max(handler->prcsn, ilen);
 	if (nb == 0 && handler->prcsn == -1))
 		res += 1;
@@ -65,7 +65,7 @@ size_t      print_bnb(unsigned long long int res, t_printf *handler)
 
 	if (!handler)
 		return (0);
-	ilen = ft_nbrlenbase(res, 2);
+	ilen = ft_unbrlenbase(res, 2);
 	len = bnb_length(res, handler);
   if (!(handler->f_min) && len < handler->width)
 		ft_putlenchar((handler->f_zero && handler->prcsn == -1) ?

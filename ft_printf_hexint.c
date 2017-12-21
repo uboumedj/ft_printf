@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 08:37:41 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/20 21:52:18 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		hexnb_length(unsigned long long int nb, t_printf *handler)
 
 	if (nb == 0)
 		return (0);
-	ilen = ft_nbrlenbase(nb, 16);
+	ilen = ft_unbrlenbase(nb, 16);
 	res = ft_max(handler->prcsn, ilen);
 	if (nb == 0 && handler->prcsn == -1))
 		res += 1;
@@ -76,7 +76,7 @@ size_t      print_hexnb(unsigned long long int res, t_printf *handler)
 
   if (!handler)
     return (0);
-  ilen = ft_nbrlenbase(res, 16);
+  ilen = ft_unbrlenbase(res, 16);
   len = onb_length(res, handler);
   if (!(handler->f_min) && len < handler->width)
 		ft_putlenchar(handler->f_zero ? '0' : ' ', handler->width - len);
