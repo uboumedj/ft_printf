@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:24:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 21:50:20 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 05:03:27 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ size_t	print_str(char *str, t_printf *handler)
 		else if (handler->spec == 'S')
 			str = (char *)L"(null)";
 	}
-	len = wstr_len(str);
+	len = wstr_len(str, handler);
 	if (!(handler->f_min) && len < handler->width)
 		ft_putlenchar(handler->f_zero ? '0' : ' ', handler->width - len);
 	if (str)

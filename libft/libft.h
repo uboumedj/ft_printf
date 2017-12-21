@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 11:39:48 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:26:42 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 05:08:37 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char			*ft_itoa(int n);
 char			*ft_strrev(char *str);
 char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
-size_t			ft_strlcat(char *dest, const char *src, size_t size);
+size_t		ft_strlcat(char *dest, const char *src, size_t size);
 char			*ft_strchr(const char *str, int c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -72,7 +72,7 @@ void			ft_striter(char *s, void (*f)(char *));
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t			ft_strlen(const char *str);
+size_t		ft_strlen(const char *str);
 int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strnew(size_t size);
@@ -83,6 +83,7 @@ char			*ft_strctrim(char const *s, char c);
 char			**ft_strsplit(char const *s, char c);
 int				ft_nbrlen(long long int nbr);
 size_t		ft_unbrlenbase(unsigned long long int nb, unsigned int base);
+int				ft_strnlen(const char *str, int n);
 int				ft_wstrlen(const wchar_t *str);
 int				ft_wstrnlen(const wchar_t *str, int n);
 
