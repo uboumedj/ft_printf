@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 11:39:48 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 21:45:39 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/21 04:26:42 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
-int				ft_wcharlen(wchar_t c)
+int				ft_wcharlen(wchar_t c);
 
 /*
 ** ----------------------------Memory Manipulation---------------------------
