@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 05:27:53 by uboumedj         ###   ########.fr       */
+/*   Updated: 2017/12/24 01:38:01 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,11 @@ void set_flags(t_printf *handler, char **str, const char *list)
 	{
 		while (ft_strchr(list, **str) != 0)
 		{
-			if (**str == '-')
-				handler->f_min = 1;
-			else if (**str == '+')
-				handler->f_add = 1;
-			else if (**str == ' ')
-				handler->f_spc = 1;
-			else if (**str == '#')
-				handler->f_shrp = 1;
-			else if (**str == '0')
-				handler->f_zero = 1;
+			handler->f_min = ((**str == '-') ? 1 : 0);
+			handler->f_add = ((**str == '+') ? 1 : 0);
+			handler->f_spc = ((**str == ' ') ? 1 : 0);
+			handler->f_shrp = ((**str == '#') ? 1 : 0);
+			handler->f_zero = ((**str == '0') ? 1 : 0);
 			*str += 1;
 		}
 	}
@@ -103,7 +98,10 @@ char	*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
 	if (ft_toneg(&(handler->width)))
 		handler->f_min = 1;
 	if (*str == '.')
+	{
+		str += 1;
 		set_width(vlist, &(handler->prcsn), &str);
+	}
 	else
 		handler->prcsn = -1;
 	set_length(&str, mod);
