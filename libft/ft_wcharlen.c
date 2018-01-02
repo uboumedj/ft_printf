@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 20:55:46 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/02 14:23:52 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 15:09:29 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int		ft_wcharlen(wchar_t c)
 		res = 3;
 	else if (c <= 0x10FFFF)
 		res = 4;
+	else
+		res = 0;
 	return (res);
 }

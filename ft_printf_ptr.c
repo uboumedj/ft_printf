@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 02:30:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/02 14:48:53 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 15:08:39 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ size_t			do_ptr(va_list *vlist, int mod, t_printf *handler)
 {
 	void	*ptr;
 
+	mod = 0;
 	ptr = va_arg(*vlist, void *);
 	return (print_ptr((size_t)ptr, handler));
 }
