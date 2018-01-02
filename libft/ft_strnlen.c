@@ -6,18 +6,18 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 05:05:35 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 05:07:59 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:08:13 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int   ft_strnlen(const char *str, int n)
+int		ft_strnlen(const char *str, int n)
 {
-  int i;
+	int i;
 
-  i = 0;
-  while (str[i] != '\0' && i < n)
-    i++;
-  return (i);
+	i = 0;
+	while (str[i] != '\0' && i < n)
+		i++;
+	return (i);
 }

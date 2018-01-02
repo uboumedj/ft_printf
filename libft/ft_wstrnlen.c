@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wstrnlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: uboumedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/20 21:00:20 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 21:33:11 by uboumedj         ###   ########.fr       */
+/*   Created: 2018/01/02 13:49:39 by uboumedj          #+#    #+#             */
+/*   Updated: 2018/01/02 14:01:18 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_wstrnlen(const wchar_t *str, int n)
 {
-  int   charlen;
+	int		charlen;
 	int		len;
 
 	if (!str)

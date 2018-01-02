@@ -6,15 +6,16 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 20:55:46 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 20:57:04 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:23:52 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wcharlen(wchar_t c)
+int		ft_wcharlen(wchar_t c)
 {
 	int res;
+
 	if (c <= 0x7F)
 		res = 1;
 	else if (c <= 0x7FF)

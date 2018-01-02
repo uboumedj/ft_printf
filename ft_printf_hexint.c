@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:55:15 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:54:48 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ size_t			do_hexnb(va_list *vlist, int mod, t_printf *handler)
 	unsigned long long int	res;
 
 	if (mod == 0)
-    res = (unsigned int)va_arg(*vlist, long long int);
-  else if (mod == 1)
+		res = (unsigned int)va_arg(*vlist, long long int);
+	else if (mod == 1)
 		res = (unsigned char)va_arg(*vlist, unsigned long long int);
 	else if (mod == 2)
 		res = (unsigned short)va_arg(*vlist, unsigned long long int);
@@ -35,8 +35,8 @@ size_t			do_hexnb(va_list *vlist, int mod, t_printf *handler)
 
 static int		hexnb_length(unsigned long long int nb, t_printf *handler)
 {
-	int		ilen;
-	int		res;
+	int						ilen;
+	int						res;
 
 	if (nb == 0)
 		return (0);
@@ -44,8 +44,8 @@ static int		hexnb_length(unsigned long long int nb, t_printf *handler)
 	res = ft_max(handler->prcsn, ilen);
 	if (nb == 0 && handler->prcsn == -1)
 		res += 1;
-  if (nb != 0 && handler->f_shrp)
-    res += 2;
+	if (nb != 0 && handler->f_shrp)
+		res += 2;
 	return (res);
 }
 
@@ -53,7 +53,7 @@ static void		put_hexnb(unsigned long long int res, t_printf *handler,
 													char *hexlist)
 {
 	if (hexlist)
-  {
+	{
 		if (res < 16)
 			ft_putchar(hexlist[res]);
 		else
@@ -64,21 +64,21 @@ static void		put_hexnb(unsigned long long int res, t_printf *handler,
 	}
 }
 
-size_t      print_hexnb(unsigned long long int res, t_printf *handler)
+size_t			print_hexnb(unsigned long long int res, t_printf *handler)
 {
-  int		ilen;
-  int		len;
+	int			ilen;
+	int			len;
 
-  if (!handler)
-    return (0);
-  ilen = ft_unbrlenbase(res, 16);
-  len = hexnb_length(res, handler);
-  if (!(handler->f_min) && len < handler->width)
+	if (!handler)
+		return (0);
+	ilen = ft_unbrlenbase(res, 16);
+	len = hexnb_length(res, handler);
+	if (!(handler->f_min) && len < handler->width)
 		ft_putlenchar(handler->f_zero ? '0' : ' ', handler->width - len);
-  if (handler->f_shrp && res != 0)
-  	ft_putstr(handler->spec == 'X' ? "0X" : "0x");
-  if (ilen < handler->prcsn)
-  	ft_putlenchar('0', handler->prcsn - ilen);
+	if (handler->f_shrp && res != 0)
+		ft_putstr(handler->spec == 'X' ? "0X" : "0x");
+	if (ilen < handler->prcsn)
+		ft_putlenchar('0', handler->prcsn - ilen);
 	if (res != 0 || handler->prcsn == -1)
 	{
 		if (handler->spec == 'x')
@@ -86,7 +86,7 @@ size_t      print_hexnb(unsigned long long int res, t_printf *handler)
 		else if (handler->spec == 'X')
 			put_hexnb(res, handler, "0123456789ABCDEF");
 	}
-  if (handler->f_min && len < handler->width)
-  	ft_putlenchar(' ', handler->width - len);
-  return (ft_max(len, handler->width));
+	if (handler->f_min && len < handler->width)
+		ft_putlenchar(' ', handler->width - len);
+	return (ft_max(len, handler->width));
 }

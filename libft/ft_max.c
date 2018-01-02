@@ -6,16 +6,16 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 02:20:08 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/18 02:20:57 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:32:26 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int   ft_max(int a, int b)
+int		ft_max(int a, int b)
 {
-  if (a > b)
-    return (a);
-  else
-    return (b);
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }

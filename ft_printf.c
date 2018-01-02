@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:36:23 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:39:42 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:59:54 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t		strparse(const char *str, va_list *vlist)
 {
-	size_t	len;
+	size_t		len;
 	char		*tmp;
 	char		*start;
 
@@ -39,7 +39,7 @@ size_t		strparse(const char *str, va_list *vlist)
 	return (len);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list	vlist;
 	size_t	len;

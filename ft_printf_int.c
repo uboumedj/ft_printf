@@ -6,15 +6,15 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 04:59:59 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:50:52 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t				do_nb(va_list *vlist, int mod, t_printf *handler)
+size_t			do_nb(va_list *vlist, int mod, t_printf *handler)
 {
-	long long int res;
+	long long int	res;
 
 	if (mod == 0)
 		res = (int)va_arg(*vlist, long long int);
@@ -33,9 +33,9 @@ size_t				do_nb(va_list *vlist, int mod, t_printf *handler)
 	return (print_nb((long long int)res, handler));
 }
 
-size_t				do_lnb(va_list *vlist, int mod, t_printf *handler)
+size_t			do_lnb(va_list *vlist, int mod, t_printf *handler)
 {
-	long int			res;
+	long int		res;
 
 	res = va_arg(*vlist, long int);
 	if (handler->spec == 'D')
@@ -49,8 +49,8 @@ size_t				do_lnb(va_list *vlist, int mod, t_printf *handler)
 
 static int		nb_length(long long int nb, t_printf *handler)
 {
-	int		ilen;
-	int		res;
+	int				ilen;
+	int				res;
 
 	ilen = ft_nbrlen(nb);
 	res = ft_max(handler->prcsn, ilen);
@@ -75,10 +75,10 @@ static void		put_nb(long long int res)
 	}
 }
 
-size_t				print_nb(long long int res, t_printf *handler)
+size_t			print_nb(long long int res, t_printf *handler)
 {
-	int		ilen;
-	int		len;
+	int				ilen;
+	int				len;
 
 	if (!handler)
 		return (0);
@@ -90,7 +90,7 @@ size_t				print_nb(long long int res, t_printf *handler)
 	if (res < 0)
 		ft_putchar('-');
 	else if (res >= 0 && (handler->f_add || handler->f_spc))
-			ft_putchar(handler->f_add ? '+' : ' ');
+		ft_putchar(handler->f_add ? '+' : ' ');
 	if (len < handler->width && !(handler->f_min) && handler->f_zero
 				&& handler->prcsn < 0)
 		ft_putlenchar('0', handler->width - len);

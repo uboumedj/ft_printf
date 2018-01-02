@@ -6,15 +6,15 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:24:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 05:14:28 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:51:43 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	do_str(va_list *vlist, int mod, t_printf *handler)
+size_t			do_str(va_list *vlist, int mod, t_printf *handler)
 {
-	char *str;
+	char	*str;
 
 	if (handler->spec == 's' && mod == 3)
 		handler->spec = 'S';
@@ -22,7 +22,7 @@ size_t	do_str(va_list *vlist, int mod, t_printf *handler)
 	return (print_str(str, handler));
 }
 
-static int	wstr_len(char *str, t_printf *handler)
+static int		wstr_len(char *str, t_printf *handler)
 {
 	if (str)
 	{
@@ -44,9 +44,9 @@ static int	wstr_len(char *str, t_printf *handler)
 	return (0);
 }
 
-size_t	print_str(char *str, t_printf *handler)
+size_t			print_str(char *str, t_printf *handler)
 {
-	int len;
+	int		len;
 
 	if (!handler)
 		return (0);

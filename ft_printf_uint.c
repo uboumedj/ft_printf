@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 18:35:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/21 05:19:47 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:37:32 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ size_t			do_unb(va_list *vlist, int mod, t_printf *handler)
 	unsigned long long int	res;
 
 	if (mod == 0)
-    res = (unsigned int)va_arg(*vlist, long long int);
-  else if (mod == 1)
+		res = (unsigned int)va_arg(*vlist, long long int);
+	else if (mod == 1)
 		res = (unsigned char)va_arg(*vlist, unsigned long long int);
 	else if (mod == 2)
 		res = (unsigned short)va_arg(*vlist, unsigned long long int);
@@ -56,22 +56,22 @@ static void		put_unb(unsigned long long int res)
 	}
 }
 
-size_t      print_unb(unsigned long long int res, t_printf *handler)
+size_t			print_unb(unsigned long long int res, t_printf *handler)
 {
-  int		ilen;
+	int		ilen;
 	int		len;
 
 	if (!handler)
 		return (0);
 	ilen = ft_unbrlenbase(res, 10);
 	len = unb_length(res, handler);
-  if (!handler->f_min && len < handler->width)
+	if (!handler->f_min && len < handler->width)
 		ft_putlenchar(' ', handler->width - len);
-  if (ilen < handler->prcsn)
-  	ft_putlenchar('0', handler->prcsn - ilen);
-  if (res != 0 || handler->prcsn == -1)
+	if (ilen < handler->prcsn)
+		ft_putlenchar('0', handler->prcsn - ilen);
+	if (res != 0 || handler->prcsn == -1)
 		put_unb(res);
-  if (handler->f_min && len < handler->width)
-  	ft_putlenchar(' ', handler->width - len);
-  return (ft_max(len, handler->width));
+	if (handler->f_min && len < handler->width)
+		ft_putlenchar(' ', handler->width - len);
+	return (ft_max(len, handler->width));
 }

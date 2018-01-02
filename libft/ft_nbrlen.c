@@ -6,21 +6,21 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 02:11:13 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/18 02:12:43 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:31:02 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_nbrlen(long long int nbr)
+int		ft_nbrlen(long long int nbr)
 {
-  int res;
+	int res;
 
-  res = 0;
-  while (nbr != 0)
-  {
-    nbr = nbr / 10;
-    res++;
-  }
-  return (res);
+	res = 0;
+	while (nbr != 0)
+	{
+		nbr = nbr / 10;
+		res++;
+	}
+	return (res);
 }

@@ -6,13 +6,13 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 02:58:38 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/19 03:00:17 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:30:15 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putlenchar(char c, size_t len)
+void	ft_putlenchar(char c, size_t len)
 {
 	while (len > 0)
 	{

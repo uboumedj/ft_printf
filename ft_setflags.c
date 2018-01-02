@@ -6,16 +6,16 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/24 01:38:01 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:34:47 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	do_flag(char **str, va_list *vlist)
+size_t		do_flag(char **str, va_list *vlist)
 {
 	t_printf	handler;
-	int				mod;
+	int			mod;
 
 	if (**str == '%')
 	{
@@ -30,7 +30,7 @@ size_t	do_flag(char **str, va_list *vlist)
 	return (0);
 }
 
-void set_flags(t_printf *handler, char **str, const char *list)
+void		set_flags(t_printf *handler, char **str, const char *list)
 {
 	if (handler && str)
 	{
@@ -46,9 +46,9 @@ void set_flags(t_printf *handler, char **str, const char *list)
 	}
 }
 
-int		set_width(va_list *vlist, int *width, char **str)
+int			set_width(va_list *vlist, int *width, char **str)
 {
-	int test;
+	int			test;
 
 	if (**str == '*')
 	{
@@ -62,7 +62,7 @@ int		set_width(va_list *vlist, int *width, char **str)
 	return (1);
 }
 
-void set_length(char **str, int *mod)
+void		set_length(char **str, int *mod)
 {
 	if (**str == 'h')
 	{
@@ -91,7 +91,7 @@ void set_length(char **str, int *mod)
 	}
 }
 
-char	*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
+char		*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
 {
 	set_flags(handler, &str, "-+ #0");
 	set_width(vlist, &(handler->width), &str);

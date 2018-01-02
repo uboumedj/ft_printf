@@ -6,15 +6,15 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 20:37:23 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 20:38:00 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:27:53 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 			ft_putwstr(wchar_t const *str)
+void	ft_putwstr(wchar_t const *str)
 {
-  int i;
+	int		i;
 
 	if (str != NULL)
 	{

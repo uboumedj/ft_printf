@@ -6,15 +6,15 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 20:00:43 by uboumedj          #+#    #+#             */
-/*   Updated: 2017/12/20 20:38:18 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 14:25:02 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putwchar(wchar_t c)
+void	ft_putwchar(wchar_t c)
 {
-  if (c <= 0x7F)
+	if (c <= 0x7F)
 		ft_putchar(c);
 	else if (c <= 0x7FF)
 	{
