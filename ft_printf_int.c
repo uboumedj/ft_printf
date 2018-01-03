@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/02 15:07:28 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/02 22:09:21 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t			do_nb(va_list *vlist, int mod, t_printf *handler)
 	else if (mod == 3)
 		res = (long)va_arg(*vlist, long long int);
 	else if (mod == 4)
-		res = (long long)va_arg(*vlist, long long int);
+		res = va_arg(*vlist, long long int);
 	else if (mod == 5)
 		res = (intmax_t)va_arg(*vlist, long long int);
 	else if (mod == 6)
