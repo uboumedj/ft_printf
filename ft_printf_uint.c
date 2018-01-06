@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 18:35:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/02 15:05:04 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/06 18:37:26 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ size_t			do_unb(va_list *vlist, int mod, t_printf *handler)
 	return (print_unb((unsigned long long int)res, handler));
 }
 
-static int		unb_length(unsigned long long int nb, t_printf *handler)
+static int		unb_length(unsigned long long int nb, int *ilen,
+													t_printf *handler)
 {
-	int		ilen;
 	int		res;
 
-	ilen = ft_unbrlenbase(nb, 10);
-	res = ft_max(handler->prcsn, ilen);
+	if (nb != 0)
+		*ilen = ft_unbrlenbase(nb, 10);
+	res = ft_max(handler->prcsn, *ilen);
 	if (nb == 0 && handler->prcsn == -1)
 		res += 1;
 	return (res);
@@ -65,8 +66,8 @@ size_t			print_unb(unsigned long long int res, t_printf *handler)
 
 	if (!handler)
 		return (0);
-	ilen = ft_unbrlenbase(res, 10);
-	len = unb_length(res, handler);
+	ilen = 0;
+	len = unb_length(res, &ilen, handler);
 	if (!handler->f_min && len < handler->width)
 		ft_putlenchar(' ', handler->width - len);
 	if (ilen < handler->prcsn)

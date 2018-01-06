@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 07:18:08 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/02 15:04:10 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/06 18:40:37 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,14 @@ size_t			do_bnb(va_list *vlist, int mod, t_printf *handler)
 	return (print_bnb((unsigned long long int)res, handler));
 }
 
-static int		bnb_length(unsigned long long int nb, t_printf *handler)
+static int		bnb_length(unsigned long long int nb, int *ilen,
+													t_printf *handler)
 {
-	int		ilen;
 	int		res;
 
-	if (nb == 0)
-		return (0);
-	ilen = ft_unbrlenbase(nb, 2);
-	res = ft_max(handler->prcsn, ilen);
+	if (nb != 0)
+		*ilen = ft_unbrlenbase(nb, 2);
+	res = ft_max(handler->prcsn, *ilen);
 	if (nb == 0 && handler->prcsn == -1)
 		res += 1;
 	return (res);
@@ -67,8 +66,8 @@ size_t			print_bnb(unsigned long long int res, t_printf *handler)
 
 	if (!handler)
 		return (0);
-	ilen = ft_unbrlenbase(res, 2);
-	len = bnb_length(res, handler);
+	ilen = 0;
+	len = bnb_length(res, &ilen, handler);
 	if (!(handler->f_min) && len < handler->width)
 		ft_putlenchar((handler->f_zero && handler->prcsn == -1) ?
 			'0' : ' ', handler->width - len);

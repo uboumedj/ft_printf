@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/03 23:09:36 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/06 18:36:18 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@ size_t			do_hexnb(va_list *vlist, int mod, t_printf *handler)
 	return (print_hexnb((unsigned long long int)res, handler));
 }
 
-static int		hexnb_length(unsigned long long int nb, t_printf *handler)
+static int		hexnb_length(unsigned long long int nb, int *ilen,
+														t_printf *handler)
 {
-	int						ilen;
 	int						res;
 
-	ilen = ft_unbrlenbase(nb, 16);
-	res = ft_max(handler->prcsn, ilen);
+	if (nb != 0)
+		*ilen = ft_unbrlenbase(nb, 16);
+	res = ft_max(handler->prcsn, *ilen);
 	if (nb == 0 && handler->prcsn == -1)
 		res += 1;
 	if (nb != 0 && handler->f_shrp)
@@ -71,8 +72,8 @@ size_t			print_hexnb(unsigned long long int res, t_printf *handler)
 
 	if (!handler)
 		return (0);
-	ilen = ft_unbrlenbase(res, 16);
-	len = hexnb_length(res, handler);
+	ilen = 0;
+	len = hexnb_length(res, &ilen, handler);
 	if (!(handler->f_min) && len < handler->width)
 		ft_putlenchar(handler->f_zero ? '0' : ' ', handler->width - len);
 	if (handler->f_shrp && res != 0)
