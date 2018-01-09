@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 20:42:14 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/09 14:38:24 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:17:38 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ static int		onb_length(unsigned long long int nb, int *ilen,
 	if (nb != 0)
 		*ilen = ft_unbrlenbase(nb, 8);
 	res = ft_max(handler->prcsn, *ilen);
-	if (nb == 0 && handler->prcsn != 0)
+	if (nb == 0 && handler->prcsn < 0)
 		res += 1;
-	if (handler->f_shrp && (nb != 0 || handler->prcsn == 0))
+	if (handler->f_shrp && ((nb != 0 && handler->prcsn <= 0)
+				|| (nb == 0 && handler->prcsn == 0)))
 		res += 1;
 	return (res);
 }
