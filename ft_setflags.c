@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/09 16:14:43 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:41:01 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ char		*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
 	{
 		str += 1;
 		set_width(vlist, &(handler->prcsn), &str);
+		if (handler->prcsn < 0)
+			handler->prcsn = -1;
 	}
 	else
 		handler->prcsn = -1;
