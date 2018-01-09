@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:48:59 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/02 22:09:21 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/09 12:48:48 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ size_t			do_nb(va_list *vlist, int mod, t_printf *handler)
 	long long int	res;
 
 	if (mod == 0)
-		res = (int)va_arg(*vlist, long long int);
+		res = va_arg(*vlist, int);
 	else if (mod == 1)
-		res = (signed char)va_arg(*vlist, long long int);
+		res = (signed char)va_arg(*vlist, int);
 	else if (mod == 2)
-		res = (short)va_arg(*vlist, long long int);
+		res = (short)va_arg(*vlist, int);
 	else if (mod == 3)
-		res = (long)va_arg(*vlist, long long int);
+		res = va_arg(*vlist, long int);
 	else if (mod == 4)
 		res = va_arg(*vlist, long long int);
 	else if (mod == 5)
-		res = (intmax_t)va_arg(*vlist, long long int);
+		res = va_arg(*vlist, intmax_t);
 	else if (mod == 6)
-		res = (size_t)va_arg(*vlist, long long int);
+		res = va_arg(*vlist, size_t);
 	else
 		return (0);
-	return (print_nb((long long int)res, handler));
+	return (print_nb(res, handler));
 }
 
 size_t			do_lnb(va_list *vlist, int mod, t_printf *handler)
@@ -67,14 +67,18 @@ static int		nb_length(long long int nb, t_printf *handler)
 
 static void		put_nb(long long int res)
 {
+	unsigned long long int temp;
+
 	if (res < 0)
-		res = -res;
-	if (res < 10)
-		ft_putchar('0' + res);
+		temp = -res;
+	else
+		temp = res;
+	if (temp < 10)
+		ft_putchar('0' + temp);
 	else
 	{
-		put_nb(res / 10);
-		ft_putchar('0' + (res % 10));
+		put_nb(temp / 10);
+		ft_putchar('0' + (temp % 10));
 	}
 }
 

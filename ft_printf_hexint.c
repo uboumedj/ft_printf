@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 21:03:01 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/06 18:36:18 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/09 13:43:11 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,19 @@ size_t			print_hexnb(unsigned long long int res, t_printf *handler)
 		return (0);
 	ilen = 0;
 	len = hexnb_length(res, &ilen, handler);
-	if (!(handler->f_min) && len < handler->width)
-		ft_putlenchar(handler->f_zero ? '0' : ' ', handler->width - len);
+	if (!(handler->f_min) && len < handler->width && (!(handler->f_zero)
+				|| !(handler->prcsn == -1)))
+		ft_putlenchar(' ', handler->width - len);
 	if (handler->f_shrp && res != 0)
 		ft_putstr(handler->spec == 'X' ? "0X" : "0x");
+	if (!(handler->f_min) && len < handler->width && handler->f_zero
+			&& handler->prcsn < 0)
+		ft_putlenchar('0', handler->width - len);
 	if (ilen < handler->prcsn)
 		ft_putlenchar('0', handler->prcsn - ilen);
 	if (res != 0 || handler->prcsn == -1)
-	{
-		if (handler->spec == 'x')
-			put_hexnb(res, handler, "0123456789abcdef");
-		else if (handler->spec == 'X')
-			put_hexnb(res, handler, "0123456789ABCDEF");
-	}
+		put_hexnb(res, handler, (handler->spec == 'x' ?
+						"0123456789abcdef" : "0123456789ABCDEF"));
 	if (handler->f_min && len < handler->width)
 		ft_putlenchar(' ', handler->width - len);
 	return (ft_max(len, handler->width));

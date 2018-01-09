@@ -6,7 +6,7 @@
 #    By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/31 12:39:51 by uboumedj          #+#    #+#              #
-#    Updated: 2018/01/02 13:20:54 by uboumedj         ###   ########.fr        #
+#    Updated: 2018/01/09 11:23:56 by uboumedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ $(NAME): $(OBJS)
 	@echo "\033[1;34mft_printf\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
 
 %.o: %.c
-	@mkdir -p temp
 	@$(CC) $(FLAGS) -Iinclude -o $@ -c $<
 
 clean:

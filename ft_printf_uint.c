@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 18:35:34 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/06 18:37:26 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/09 11:26:47 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,12 @@ size_t			print_unb(unsigned long long int res, t_printf *handler)
 		return (0);
 	ilen = 0;
 	len = unb_length(res, &ilen, handler);
-	if (!handler->f_min && len < handler->width)
+	if (!(handler->f_min) && len < handler->width && (!(handler->f_zero)
+				|| !(handler->prcsn == -1)))
 		ft_putlenchar(' ', handler->width - len);
+	if (handler->f_zero && handler->prcsn < 0 && !(handler->f_min)
+			&& len < handler->width)
+		ft_putlenchar('0', handler->width - len);
 	if (ilen < handler->prcsn)
 		ft_putlenchar('0', handler->prcsn - ilen);
 	if (res != 0 || handler->prcsn == -1)

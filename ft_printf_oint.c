@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 20:42:14 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/06 18:39:02 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/09 14:07:56 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ size_t			do_onb(va_list *vlist, int mod, t_printf *handler)
 	unsigned long long int	res;
 
 	if (mod == 0)
-		res = (unsigned int)va_arg(*vlist, long long int);
+		res = va_arg(*vlist, unsigned int);
 	else if (mod == 1)
-		res = (unsigned char)va_arg(*vlist, unsigned long long int);
+		res = (unsigned char)va_arg(*vlist, unsigned int);
 	else if (mod == 2)
-		res = (unsigned short)va_arg(*vlist, unsigned long long int);
+		res = (unsigned short)va_arg(*vlist, unsigned int);
 	else if (mod == 3)
-		res = (unsigned long)va_arg(*vlist, unsigned long long int);
+		res = va_arg(*vlist, unsigned long int);
 	else if (mod == 4)
-		res = (unsigned long long)va_arg(*vlist, unsigned long long int);
+		res = va_arg(*vlist, unsigned long long int);
 	else if (mod == 5)
-		res = (uintmax_t)va_arg(*vlist, unsigned long long int);
+		res = (uintmax_t)va_arg(*vlist, uintmax_t);
 	else if (mod == 6)
-		res = (size_t)va_arg(*vlist, unsigned long long int);
+		res = (size_t)va_arg(*vlist, size_t);
 	else
 		return (0);
 	return (print_onb((unsigned long long int)res, handler));
@@ -43,7 +43,9 @@ static int		onb_length(unsigned long long int nb, int *ilen,
 	if (nb != 0)
 		*ilen = ft_unbrlenbase(nb, 8);
 	res = ft_max(handler->prcsn, *ilen);
-	if (nb == 0 && handler->prcsn == -1)
+	if (nb == 0 && handler->prcsn != 0)
+		res += 1;
+	if (handler->f_shrp)
 		res += 1;
 	return (res);
 }
@@ -73,9 +75,9 @@ size_t			print_onb(unsigned long long int res, t_printf *handler)
 			'0' : ' ', handler->width - len);
 	if (ilen < handler->prcsn)
 		ft_putlenchar('0', handler->prcsn - ilen);
-	else if (handler->f_shrp && res != 0)
+	else if (handler->f_shrp)
 		ft_putchar('0');
-	if (res != 0 || handler->prcsn == -1 || handler->f_shrp)
+	if (res != 0 || handler->prcsn == -1)
 		put_onb(res);
 	if (handler->f_min && len < handler->width)
 		ft_putlenchar(' ', handler->width - len);
