@@ -6,11 +6,12 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/09 14:08:27 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/09 16:14:43 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 size_t		do_flag(char **str, va_list *vlist)
 {
@@ -39,7 +40,7 @@ void		set_flags(t_printf *handler, char **str, const char *list)
 		handler->f_spc = 0;
 		handler->f_shrp = 0;
 		handler->f_zero = 0;
-		while (ft_strchr(list, **str) != 0)
+		while (**str != '\0' && ft_strchr(list, **str) != 0)
 		{
 			if (**str == '-')
 				handler->f_min = 1;
@@ -60,6 +61,8 @@ int			set_width(va_list *vlist, int *width, char **str)
 {
 	int			test;
 
+	if (!(**str))
+		return (0);
 	if (**str == '*')
 	{
 		*width = va_arg(*vlist, int);
@@ -115,8 +118,12 @@ char		*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
 	else
 		handler->prcsn = -1;
 	set_length(&str, mod);
-	handler->spec = *str;
-	if (*str != '\0')
+	while (*str != '\0' && ft_strchr("hzlj", *str))
 		str++;
+	if (*str != '\0')
+	{
+		handler->spec = *str;
+		str++;
+	}
 	return (str);
 }
