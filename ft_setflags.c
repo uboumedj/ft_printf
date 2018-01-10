@@ -6,12 +6,11 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:40:36 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/09 18:41:01 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/10 19:04:55 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 size_t		do_flag(char **str, va_list *vlist)
 {
