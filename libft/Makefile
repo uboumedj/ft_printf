@@ -6,55 +6,106 @@
 #    By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/10 14:14:53 by uboumedj          #+#    #+#              #
-#    Updated: 2017/12/31 13:29:31 by uboumedj         ###   ########.fr        #
+#    Updated: 2018/01/10 17:23:45 by uboumedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-FLAGS = -Wall -Wextra -Werror
-
-OPTIONS = -c
+CCFLAGS = -Wall -Wextra -Werror
 
 HEADER = libft.h
 
-SOURCES = ft_memset.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c \
-					ft_memalloc.c ft_memdel.c ft_bzero.c \
-					ft_strlen.c ft_strsplit.c ft_strctrim.c ft_strtrim.c ft_strjoin_i.c \
-					ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c \
-					ft_strchr.c ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c \
-					ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c ft_strsub.c \
-					ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strjoin.c ft_strrev.c \
-					ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isupper.c \
-					ft_islower.c ft_isspace.c ft_isblank.c \
-					ft_toupper.c ft_tolower.c ft_atoi.c ft_itoa.c \
-					ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putstr_i.c \
-					ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-					ft_putwstr.c ft_putwchar.c \
-					ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
-					ft_abs.c ft_sqrt.c ft_max.c ft_min.c \
-					ft_nbrlen.c ft_strtonum.c ft_toneg.c ft_putspace.c ft_putlenchar.c \
-					ft_putlenstr.c ft_putlenwstr.c ft_unbrlenbase.c \
-					ft_nbrlen.c ft_wcharlen.c ft_wstrnlen.c ft_wstrlen.c ft_strnlen.c
+SRCDIR = srcs
+OBJDIR = obj
+INCDIR = inc
 
-OBJECTS = $(SOURCES:.c=.o)
+.PHONY: all $(NAME) clean fclean re
+
+SRC = mem/ft_memset.c mem/ft_memcpy.c mem/ft_memccpy.c mem/ft_memmove.c \
+		  mem/ft_memchr.c mem/ft_memcmp.c mem/ft_memalloc.c mem/ft_memdel.c \
+		  mem/ft_bzero.c \
+		  str/ft_strlen.c str/ft_strsplit.c str/ft_strctrim.c str/ft_strtrim.c \
+		  str/ft_strjoin_i.c str/ft_strdup.c str/ft_strcpy.c str/ft_strncpy.c \
+		  str/ft_strcat.c str/ft_strncat.c str/ft_strlcat.c str/ft_strchr.c \
+		  str/ft_strrchr.c str/ft_strstr.c str/ft_strnstr.c str/ft_strcmp.c \
+		  str/ft_strncmp.c str/ft_strnew.c str/ft_strdel.c str/ft_strclr.c \
+		  str/ft_striter.c str/ft_striteri.c str/ft_strsub.c str/ft_strmap.c \
+		  str/ft_strmapi.c str/ft_strequ.c str/ft_strnequ.c str/ft_strjoin.c \
+		  str/ft_strrev.c str/ft_atoi.c str/ft_itoa.c str/ft_strtonum.c str/ft_wstrlen.c \
+		  str/ft_wstrnlen.c str/ft_strnlen.c \
+		  char/ft_isalpha.c char/ft_isdigit.c char/ft_isalnum.c char/ft_isascii.c \
+		  char/ft_isprint.c char/ft_isupper.c char/ft_islower.c char/ft_isspace.c \
+		  char/ft_isblank.c char/ft_toupper.c char/ft_tolower.c char/ft_wcharlen.c \
+		  display/ft_putchar.c display/ft_putstr.c display/ft_putendl.c \
+		  display/ft_putnbr.c display/ft_putstr_i.c display/ft_putchar_fd.c \
+		  display/ft_putstr_fd.c display/ft_putendl_fd.c display/ft_putnbr_fd.c \
+		  display/ft_putwstr.c display/ft_putwchar.c display/ft_putspace.c \
+		  display/ft_putlenchar.c display/ft_putlenstr.c display/ft_putlenstr.c \
+		  display/ft_putlenwstr.c \
+		  list/ft_lstnew.c list/ft_lstdelone.c list/ft_lstdel.c list/ft_lstadd.c \
+		  list/ft_lstiter.c list/ft_lstmap.c \
+		  math/ft_abs.c math/ft_sqrt.c math/ft_max.c math/ft_min.c math/ft_pow.c \
+		  math/ft_toneg.c math/ft_nbrlen.c math/ft_unbrlenbase.c
+
+#ALLOWED EXTENSIONS
+
+EXTENSIONS = .c .s
+
+# SPECIAL CHARS
+
+LOG_CLEAR        = \033[2K
+LOG_UP             = \033[A
+LOG_NOCOLOR        = \033[0m
+LOG_BLACK        = \033[1;30m
+LOG_RED            = \033[1;31m
+LOG_GREEN        = \033[1;32m
+LOG_YELLOW        = \033[1;33m
+LOG_BLUE        = \033[1;34m
+LOG_VIOLET        = \033[1;35m
+LOG_CYAN        = \033[1;36m
+LOG_WHITE        = \033[1;37m
+
+# **************************************************************************** #
+
+.PHONY: all $(NAME) build clean fclean re
+
+.SILENT:
+
+SRC := $(filter $(addprefix %, $(EXTENSIONS)), $(SRC))
+
+SRCS = $(addprefix $(SRCDIR)/, $(SRC))
+
+OBJS = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(basename $(SRC))))
+
+OBJS_DIRS = $(sort $(dir $(OBJS)))
+
+INCS_DIRS = $(addsuffix /, $(INCDIR))
+
+INCS = $(addprefix -I , $(INCS_DIRS))
 
 all: $(NAME)
 
-$(NAME):
-	@gcc $(FLAGS) $(OPTIONS) $(SOURCES) -I $(HEADER)
-	@ar rc $(NAME) $(OBJECTS)
-	@ranlib $(NAME)
-	@echo "\033[1;34mlibft\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
+$(NAME): build $(LIBS) $(OBJS)
+	echo "$(LOG_CLEAR)$(NAME)$(LOG_YELLOW)assembling...$(LOG_NOCOLOR)$(LOG_UP)"
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
+	echo "$(LOG_GREEN)$(NAME)$(LOG_YELLOW).......compiled\t✓$(LOG_NOCOLOR)"
+
+build:
+	mkdir -p $(OBJDIR)
+	mkdir -p $(OBJS_DIRS)
 
 clean:
-	@rm -rf $(OBJECTS)
-	@echo "\033[1;34mlibft\t\033[1;33mCleaning obj\t\033[0;32m[OK]\033[0m"
+	rm -rf $(OBJDIR)
+	echo "$(LOG_YELLOW)Library object directory removed\t$(LOG_RED)✓$(LOG_NOCOLOR)"
 
 fclean: clean
-	@rm -rf $(NAME)
-	@echo "\033[1;34mlibft\t\033[1;33mCleaning all\t\033[0;32m[OK]\033[0m"
+	rm -f $(NAME)
+	echo "$(LOG_YELLOW)Library .a file deleted\t\t\t$(LOG_RED)✓$(LOG_NOCOLOR)"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	echo "$(LOG_CLEAR)$(NAME)... $(LOG_YELLOW)$<$(LOG_NOCOLOR)$(LOG_UP)"
+	gcc -c -o $@ $< $(INCS) $(CCFLAGS)

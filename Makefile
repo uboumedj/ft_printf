@@ -6,7 +6,7 @@
 #    By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/31 12:39:51 by uboumedj          #+#    #+#              #
-#    Updated: 2018/01/09 11:23:56 by uboumedj         ###   ########.fr        #
+#    Updated: 2018/01/10 17:25:08 by uboumedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(NAME): $(OBJS)
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "\033[1;34mft_printf\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
+	@echo "\033[1;34mft_printf\033[1;32m.....compiled\t✓\033[0m"
 
 %.o: %.c
 	@$(CC) $(FLAGS) -Iinclude -o $@ -c $<
@@ -51,11 +51,11 @@ $(NAME): $(OBJS)
 clean:
 	@rm -rf $(OBJS)
 	@make clean -C $(LIBFT)
-	@echo "\033[1;34mft_printf/libft\t\033[1;33mCleaning obj\t\033[0;32m[OK]\033[0m"
+	@echo "\033[1;34mft_printf\033[1;33m object files removed\t\t\033[1;31m✓\033[0m"
 
 fclean: clean
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT)
-	@echo "\033[1;34mft_printf/libft\t\033[1;33mCleaning lib\t\033[0;32m[OK]\033[0m"
+	@echo "\033[1;34mft_printf\033[1;33m library .a file deleted\t\033[1;31m✓\033[0m"
 
 re: fclean all

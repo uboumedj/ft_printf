@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:37:31 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/09 16:42:12 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:04:34 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <wchar.h>
-# include "./libft/libft.h"
+# include "./libft/inc/libft.h"
 # include <stdio.h>
 
 typedef struct	s_printf

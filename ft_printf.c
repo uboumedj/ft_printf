@@ -6,7 +6,7 @@
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:36:23 by uboumedj          #+#    #+#             */
-/*   Updated: 2018/01/09 15:35:23 by uboumedj         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:29:04 by uboumedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ size_t		strparse(const char *str, va_list *vlist)
 	{
 		if (*tmp != '\0' && *tmp != '%')
 		{
-			len++;
 			tmp++;
+			len++;
 		}
 		else if (*tmp == '%')
 		{
