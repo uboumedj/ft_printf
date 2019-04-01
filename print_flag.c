@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printflags.c                                    :+:      :+:    :+:   */
+/*   print_flag.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,6 +11,12 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** the print_flag function just dispatches the handling of the flag to the
+** right sub-functions, by checking the flag it was called with. Just like the
+** original printf, if the flag isn't valid, it will be printed as a character.
+*/
 
 size_t	print_flag(va_list *vlist, t_printf *handler, int mod)
 {

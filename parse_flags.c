@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_setflags.c                                      :+:      :+:    :+:   */
+/*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uboumedj <uboumedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,23 +12,10 @@
 
 #include "ft_printf.h"
 
-size_t		do_flag(char **str, va_list *vlist)
-{
-	t_printf	handler;
-	int			mod;
-
-	if (**str == '%')
-	{
-		(*str)++;
-		if (**str != '\0')
-		{
-			mod = 0;
-			*str = parse_flag(vlist, &handler, *str, &mod);
-			return (print_flag(vlist, &handler, mod));
-		}
-	}
-	return (0);
-}
+/*
+** the set_flags function checks the presence of the "-+ #0" flags and stores
+** the result inside the t_printf structure
+*/
 
 void		set_flags(t_printf *handler, char **str, const char *list)
 {
@@ -56,6 +43,14 @@ void		set_flags(t_printf *handler, char **str, const char *list)
 	}
 }
 
+/*
+** the set_width function checks if there's a width formatting specification and
+** stores it in the width variable of the t_printf structure. It can also take a
+** '*' flag just like the original printf: if there's one, it will take the
+** first available argument from the multi-variable list va_list and use it as
+** the width specification.
+*/
+
 int			set_width(va_list *vlist, int *width, char **str)
 {
 	int			test;
@@ -73,6 +68,12 @@ int			set_width(va_list *vlist, int *width, char **str)
 		*width = test;
 	return (1);
 }
+
+/*
+** the set_length function handles the length specifiers h, hh, l, ll, j and z.
+** They are stored inside the [mod] variable for further use during the flag's
+** printing.
+*/
 
 void		set_length(char **str, int *mod)
 {
@@ -102,6 +103,13 @@ void		set_length(char **str, int *mod)
 		*str += 1;
 	}
 }
+
+/*
+** the parse_flag function checks all the flags before the conversion/formatting
+** specifier, sets all the appropriate variables using the different functions
+** above, then finally stores the conversion letter inside the [spec] variable
+** from the t_printf structure.
+*/
 
 char		*parse_flag(va_list *vlist, t_printf *handler, char *str, int *mod)
 {

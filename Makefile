@@ -27,8 +27,9 @@ SRCS =	ft_printf_bint.c \
 			ft_printf_str.c \
 			ft_printf_uint.c \
 			ft_printf.c \
-			ft_printflags.c \
-			ft_setflags.c
+			print_flag.c \
+			parse_flags.c \
+			do_flag.c
 
 INC = ft_printf.h
 
